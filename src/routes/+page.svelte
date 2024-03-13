@@ -22,6 +22,6 @@
     <h1>Gemini Response</h1>
     <input type="text" bind:value={source} />
     <input type="text" bind:value={destination} />
-    <button on:click={callOpenAIEndpoint}>Get Response</button>
+    <button on:click={callOpenAIEndpoint} class="btn btn-info">Get Response</button>
     <p>{responseText}</p>
 </main>
