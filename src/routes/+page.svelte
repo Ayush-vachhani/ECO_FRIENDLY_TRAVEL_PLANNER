@@ -27,7 +27,7 @@
         }
     }
 
-    onMount(callOpenAIEndpoint); // Call the function when component mounts
+    // onMount(callOpenAIEndpoint);
 </script>
 
 <main class="p-6">
