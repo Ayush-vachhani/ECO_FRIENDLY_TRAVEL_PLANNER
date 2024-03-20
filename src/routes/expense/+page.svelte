@@ -10,7 +10,7 @@
 
     async function callGoogleGeminiAPI() {
         // Fetch data from Google Gemini API
-        const response = await fetch('/google-gemini-api', {
+        const response = await fetch('/src/routes/expense/server', {
             method: 'POST',
             body: JSON.stringify({ country, city, hotelType, numberOfDays })
         });
