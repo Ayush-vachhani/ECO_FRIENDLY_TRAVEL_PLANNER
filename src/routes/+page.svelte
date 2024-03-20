@@ -27,8 +27,21 @@
         }
     }
 
+    function navigateToExpensePage() {
+        window.location.href = '/expense';
+    }
+
     // onMount(callOpenAIEndpoint);
 </script>
+
+<header class="bg-gray-900 text-white py-4 px-6 flex justify-between items-center">
+    <!-- <h1 class="text-3xl font-bold">Eco-Friendly Travel Finder</h1> -->
+    <div class="flex space-x-4">
+        <button class="btn btn-outline btn-primary">Home</button>
+        <button on:click={navigateToExpensePage} class="btn btn-outline btn-primary">Expense</button>
+    </div>
+</header>
+
 
 <main class="p-6">
     <h1 class="text-3xl font-bold mb-4">Eco-Friendly Travel Finder</h1>
