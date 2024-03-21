@@ -1,12 +1,13 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import {goto} from "$app/navigation";
   
     let fromCountry: string = "";
     let fromCity: string = "";
     let toCountry: string = ""; // Added field
     let toCity: string = ""; // Added field
     let hotelType: string = "1 star"; // Default to 1 star
-    let numberOfDays: number = "";
+    let numberOfDays: string = "";
     let responseText: string = 'Loading...';
   
     async function callGoogleGenerativeAPI() {
@@ -35,7 +36,7 @@
     });
   
     function navigateToHomePage() {
-      window.location.href = '/';
+      goto('/');
     }
   </script>
 

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import {goto} from "$app/navigation";
 
     let source: string = "coimbatore";
     let destination: string = "chennai";
@@ -28,7 +29,7 @@
     }
 
     function navigateToExpensePage() {
-        window.location.href = '/expense';
+        goto('/expense');
     }
 
     // onMount(callOpenAIEndpoint);
