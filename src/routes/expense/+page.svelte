@@ -34,16 +34,13 @@
     onMount(async () => {
       await calculateExpenses();
     });
-  
-    function navigateToHomePage() {
-      goto('/');
-    }
+
   </script>
 
 <div id="app">
     <header class="bg-gray-900 text-white py-4 px-6 flex justify-between items-center">
         <div class="flex space-x-4">
-            <button on:click={navigateToHomePage} class="btn btn-outline btn-primary">Home</button>
+            <button on:click={() => goto('/')} class="btn btn-outline btn-primary">Home</button>
             <button class="btn btn-outline btn-primary">Expense</button>
         </div>
     </header>
