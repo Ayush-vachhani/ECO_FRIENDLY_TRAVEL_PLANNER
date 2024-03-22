@@ -1,6 +1,6 @@
 import type {EnhancedGenerateContentResponse, GenerateContentResult, GenerativeModel} from "@google/generative-ai";
-import type {RequestHandler} from '@sveltejs/kit';
 import {GoogleGenerativeAI} from "@google/generative-ai";
+import type {RequestHandler} from '@sveltejs/kit';
 
 let sample_format = "Return the output only in Json format. Below is the sample format :" +
 	"{\n" +
@@ -29,15 +29,16 @@ let sample_format = "Return the output only in Json format. Below is the sample 
 	"transportationModes(array of objects) and overallSuggestion(string). The transportationModes array contains the fields mode(string), travelTime(string) and carbonEmission(string).";
 
 // @ts-ignore
-export const POST: RequestHandler = async ({ request }):Promise<Response> => {
-	const { source, destination } = await request.json();
+export const POST: RequestHandler = async ({request}): Promise<Response> => {
+	const {source, destination} = await request.json();
 	let prompt_with_sample = sample_format + "Source : " + source + " Destination : " + destination;
-	const genAI:GoogleGenerativeAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
-	const model :GenerativeModel = genAI.getGenerativeModel({ model: "gemini-pro"});
-
-	const result:GenerateContentResult = await model.generateContent(prompt_with_sample);
-	const response:EnhancedGenerateContentResponse = result.response;
-	console.log(response.text());
+	const genAI: GoogleGenerativeAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+	const model: GenerativeModel = genAI.getGenerativeModel({model: "gemini-pro"});
+	console.log("Fetching gemini response!");
+	const result: GenerateContentResult = await model.generateContent(prompt_with_sample);
+	const response: EnhancedGenerateContentResponse = result.response;
+	console.log("Type of response : " + typeof response);
+	console.log("Response from gemini : " + response.text());
 	return new Response(response.text());
 };
 
