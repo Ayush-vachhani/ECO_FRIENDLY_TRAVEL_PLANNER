@@ -7,7 +7,7 @@
     let destination: string = "chennai";
     let transportationModes: TransportationMode[] = [];
     let responseText: string = 'Loading...';
-    onMount(() => {
+    onMount(async () => {
         console.log('Current User:', $currentUser)
     });
     interface TransportationMode {
@@ -29,6 +29,11 @@
 
         if (response.ok) {
             const responseData: ServerResponse = await response.json();
+            const data = {
+                "Data": responseData,
+                "user": $currentUser?.id,
+            }
+            await pb.collection("History").create(data);
             responseText = responseData.overallSuggestion;
             transportationModes = responseData.transportationModes;
         } else {
@@ -46,6 +51,7 @@
         <button class="btn btn-outline btn-primary">Home</button>
         <button class="btn btn-outline btn-primary" on:click={() => goto("/register")}>Register</button>
         <button class="btn btn-outline btn-primary" on:click={() => goto("/expense")}>Expense</button>
+        <button class="btn btn-outline btn-primary" on:click={() => goto("/Travel_History")}>Travel History</button>
         {#if $currentUser}
             <button class="btn btn-outline btn-primary" on:click={() => goto("/profile")}>Profile</button>
             <button class="btn btn-outline btn-primary" on:click={logout}>Logout</button>
