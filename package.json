@@ -33,6 +33,7 @@
         "@google/generative-ai": "^0.3.0",
         "@types/mongoose": "^5.11.97",
         "mongoose": "^8.2.3",
-        "pocketbase": "^0.21.1"
+        "pocketbase": "^0.21.1",
+        "swiper": "^11.1.0"
     }
 }
