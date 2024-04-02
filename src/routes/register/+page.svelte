@@ -1,20 +1,18 @@
 <script lang="ts">
-    import {pb} from "$lib/pb";
-    import {goto} from "$app/navigation";
-
+    import { enhance } from '$app/forms';
     let username = '';
     let email = '';
     let password = '';
+    import {pb} from "$lib/pb";
+    import {goto} from "$app/navigation";
 
-    export let form: registerForm;
-
+    export let form:registerForm;
     interface registerForm {
         email: string;
         password: string;
         username: string;
     }
-
-    async function register() {
+    async function register(){
         const data = {
             "username": username,
             "email": email,
@@ -26,19 +24,18 @@
         await pb.collection('users').authWithPassword(email, password);
         await goto('/');
     }
-
-    async function login() {
+    async function login(){
         await pb.collection('users').authWithPassword(email, password);
         await goto('/');
     }
 </script>
 
 <style>
-    .card {
+    .card{
         width: 400px;
     }
 
-    .card-title {
+    .card-title{
         text-align: center;
     }
 </style>
@@ -50,22 +47,22 @@
             <form class="space-y-6"> <!-- Adjusting space between form controls -->
                 <div class="form-control">
                     <label class="label" for="email">Username</label>
-                    <input bind:value={username} class="input input-bordered" name="username">
+                    <input class="input input-bordered" name="username" bind:value={username}>
                 </div>
                 <div class="form-control">
                     <label class="label" for="email">Email</label>
-                    <input bind:value={email} class="input input-bordered" type="email">
+                    <input type="email" class="input input-bordered" bind:value={email}>
                 </div>
 
                 <div class="form-control">
                     <label class="label" for="password">Password</label>
-                    <input bind:value={password} class="input input-bordered" type="password">
+                    <input type="password" class="input input-bordered" bind:value={password}>
                 </div>
 
                 <div class="flex justify-between items-center">
-                    <button class="btn btn-primary" on:click={register}>Register</button>
+                    <button on:click={register} class="btn btn-primary">Register</button>
                     <div class="w-4"></div> <!-- Adding space between buttons -->
-                    <button class="btn btn-primary" on:click={login}>Login</button>
+                    <button on:click={login} class="btn btn-primary">Login</button>
                 </div>
             </form>
         </div>
