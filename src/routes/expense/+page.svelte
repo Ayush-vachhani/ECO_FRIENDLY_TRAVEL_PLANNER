@@ -46,7 +46,6 @@
     }
 
     responseText = "Loading...";
-    let residing_city: string = "";
 </script>
 
 <main class="p-6">
@@ -79,7 +78,7 @@
 
     <br><br>
 
-    <div class="bg-white text-center transportDetails">
+    <div class="text-center transportDetails">
         <h1>Transportation Details</h1>
         <p>Origin: {source}</p>
         <p>Destination: {destination}</p>
@@ -90,9 +89,9 @@
             <table class="w-full border-collapse table-auto">
                 <thead>
                     <tr>
-                        <th class="px-4 py-2 bg-gray-200">Mode</th>
-                        <th class="px-4 py-2 bg-gray-200">Travel Time</th>
-                        <th class="px-4 py-2 bg-gray-200">Carbon Emission</th>
+                        <th class="px-4 py-2 border">Mode</th>
+                        <th class="px-4 py-2 border">Travel Time</th>
+                        <th class="px-4 py-2 border">Carbon Emission</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -123,18 +122,6 @@
     <div class="form-container">
         <!-- Form to collect details -->
         <form>
-            <div class="flex flex-wrap mb-4 -mx-2">
-                <div class="flex flex-col mb-4 px-2 w-1/2">
-                    <input
-                        bind:value={residing_city}
-                        class="input input-bordered input-primary"
-                        id="toCity"
-                        placeholder="City"
-                        required
-                        type="text"
-                    />
-                </div>
-            </div>
 
             <br />
 
