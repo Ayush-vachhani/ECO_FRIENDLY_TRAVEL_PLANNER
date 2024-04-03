@@ -24,9 +24,16 @@ let sample_format = "Return the output only in Json format but in plain text. Be
     "    }\n" +
     "    // ... more transportation modes if applicable\n" +
     "  ],\n" +
-    "  \"overallSuggestion\": \"Consider public transit or cycling for environmentally conscious options. Driving is fastest but has higher emissions.\"\n" +
+    "  \"overallSuggestion\": \"Consider public transit or cycling for environmentally conscious options. Driving is fastest but has higher emissions.\",\n" +
+    "  \"tourist_places\": [\n" +
+    "    \"Tourist Place 1\",\n" +
+    "    \"Tourist Place 2\",\n" +
+    "    \"Tourist Place 3\"\n" +
+    "    // ... more tourist places if applicable\n" +
+    "  ]\n" +
     "}\n. Give all the possible transportation modes and their respective travel time and carbon emission. The Output json contains the fields Origin(string), destination(string)" +
-    "transportationModes(array of objects) and overallSuggestion(string). The transportationModes array contains the fields mode(string), travelTime(string) and carbonEmission(string).";
+    "transportationModes(array of objects), overallSuggestion(string), and tourist_places(array of strings). The transportationModes array contains the fields mode(string), travelTime(string), and carbonEmission(string)." +
+    "Populate the tourist_places array with the names of the tourist places that can be visited in the destination ( Minimum - 1 place, Maximum - 5 places ). Do not add anything extra to the response, except for the required fields. ";
 
 // @ts-ignore
 export const POST: RequestHandler = async ({request}): Promise<Response> => {

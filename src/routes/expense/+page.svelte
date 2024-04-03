@@ -7,6 +7,7 @@
     let destination: string = "chennai";
     let transportationModes: TransportationMode[] = [];
     let responseText: string = "Loading...";
+    let tourist_places: any[] = []
     onMount(async () => {
         console.log("Current User:", $currentUser);
     });
@@ -26,6 +27,9 @@
         interface ServerResponse {
             overallSuggestion: string;
             transportationModes: TransportationMode[];
+            tourist_places: string[];
+            destination: string;
+            source: string;
         }
 
         if (response.ok) {
@@ -37,6 +41,17 @@
             await pb.collection("History").create(data);
             responseText = responseData.overallSuggestion;
             transportationModes = responseData.transportationModes;
+            tourist_places = responseData.tourist_places;
+            const destination = responseData.destination;
+            for (let i = 0; i < tourist_places.length; i++) {
+                const tourist_spot = tourist_places[i];
+                const tourist_spot_data = {
+                    City: destination,
+                    Tourist_spot: tourist_spot,
+                };
+                await pb.collection("Tourist_Places").create(tourist_spot_data);
+            }
+            console.log("Tourist Places:", tourist_places);
         } else {
             responseText = "Failed to fetch response.";
         }
@@ -111,60 +126,5 @@
         </div>
         <br/><br/>
         <p>Overall Suggestion: {responseText}</p>
-    </div>
-
-    <br><br>
-
-    <h1 class="text-3xl font-bold mb-4">
-        Eco-Friendly Travel Planner - Expense page
-    </h1>
-
-    <br/><br/>
-
-    <div class="form-container">
-        <!-- Form to collect details -->
-        <form>
-
-            <br/>
-
-            <div class="flex flex-col mb-4 items-center">
-                <select
-                    class="select select-bordered select-primary w-1/2"
-                    id="hotelType"
-                    placeholder="Select Hotel Tier"
-                >
-                    <option value="1 star">1 star</option>
-                    <option value="2 star">2 star</option>
-                    <option value="3 star">3 star</option>
-                    <option value="4 star">4 star</option>
-                    <option value="5 star">5 star</option>
-                </select>
-            </div>
-            <div class="flex flex-col mb-4 items-center">
-                <input
-                    class="input input-bordered input-primary w-1/2"
-                    id="numberOfDays"
-                    min="1"
-                    placeholder="Enter number of days"
-                    required
-                    type="number"
-                />
-            </div>
-
-            <br/>
-
-            <div class="flex flex-col mb-4 items-center">
-                <button class="btn btn-outline btn-primary" type="submit"
-                >Get Estimated Cost of Travel
-                </button
-                >
-            </div>
-        </form>
-    </div>
-
-    <!-- Display estimated cost -->
-    <div class="output-container">
-        <h2 class="text-xl font-semibold">Estimated Cost of Trip</h2>
-        <p>{responseText}</p>
     </div>
 </main>

@@ -19,6 +19,12 @@
                         {/each}
                     </ul>
                 </div>
+                <h3>Tourist Places:</h3>
+                <ul>
+                    {#each entry.Data.tourist_places as place}
+                        <li>{place}</li>
+                    {/each}
+                </ul>
             </div>
         </div>
     {/each}
