@@ -33,19 +33,14 @@
 <main class="p-6">
     <section class="main-section">
         <h1 class="gradient-text text-center">Eco-Friendly Travel Finder</h1>
-        <p class="text-center font-semibold p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Minima ad voluptas illum? Illo itaque omnis hic dolores dolorem, iure eius dolor assumenda deleniti,
-            enim sint, pariatur repudiandae eos sapiente accusamus. Similique non sint quasi vel aut, voluptatem
-            iure ipsam aspernatur, inventore sit fuga facilis ducimus ullam quibusdam atque, cupiditate aliquid
-            blanditiis nisi praesentium dolore dignissimos sed debitis amet explicabo. Totam!</p>
+        <p class="text-center font-semibold p-3">Welcome to Eco-Friendly Travel Finder! Discover sustainable travel options that minimize your environmental impact while maximizing your adventure.</p>
     </section>
 
     <!-- Additional Sections -->
     <section class="mt-8 AboutSection">
         <h1 class="gradient-text text-center">Discover</h1>
         <div>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perspiciatis assumenda omnis, eos tenetur
-            laudantium culpa amet natus! Animi ratione error quisquam laborum labore enim in voluptatem nam sit libero!
+            Explore and learn about eco-friendly travel practices, destinations, and experiences to make your next trip unforgettable and environmentally responsible.
         </div>
     </section>
 
@@ -55,32 +50,28 @@
         <h2 class="gradient-text  mb-4 text-center">Benefits of Eco-Friendly Travel</h2>
         <div class="grid grid-cols-2">
             <div class="flex items-center justify-center p-4">
-                <p class="text-center font-semibold p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Minima ad voluptas illum? Illo itaque omnis hic dolores dolorem, iure eius dolor assumenda deleniti,
-                    enim sint, pariatur repudiandae eos sapiente accusamus. Similique non sint quasi vel aut, voluptatem
-                    iure ipsam aspernatur, inventore sit fuga facilis ducimus ullam quibusdam atque, cupiditate aliquid
-                    blanditiis nisi praesentium dolore dignissimos sed debitis amet explicabo. Totam!</p>
+                <p class="text-center font-semibold p-3">Discover the advantages of eco-friendly travel, including reduced carbon footprint, support for local communities, and preservation of natural habitats.</p>
             </div>
 
             <div class="flex items-center justify-center grid-cols-2 gap-4 p-4">
                 <div class="group p-4 rounded border transform hover:scale-105 transition duration-400">
                     <div class="text-center">
-                        <p>reduced cost of soemthing</p>
+                        <p>Contribute to local economies</p>
                     </div>
                 </div>
                 <div class="group p-4 rounded border transform hover:scale-105 transition duration-400">
                     <div class="text-center">
-                        <p>reduced cost of soemthing</p>
+                        <p>Minimize environmental impact</p>
                     </div>
                 </div>
                 <div class="group p-4 rounded border transform hover:scale-105 transition duration-400">
                     <div class="text-center">
-                        <p>reduced cost of soemthing</p>
+                        <p>Support sustainable tourism</p>
                     </div>
                 </div>
                 <div class="group p-4 rounded border transform hover:scale-105 transition duration-400">
                     <div class="text-center">
-                        <p>reduced cost of soemthing</p>
+                        <p>Preserve natural ecosystems</p>
                     </div>
                 </div>
             </div>
@@ -92,8 +83,7 @@
             <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
                 <div class="rounded-lg p-6">
                     <h3 class="gradient-text mb-4 text-center">Discover Eco-Friendly Destinations</h3>
-                    <p class="text-lg text-center">Explore our carefully curated selection of eco-friendly destinations
-                        that offer sustainable accommodations and unforgettable experiences.</p>
+                    <p class="text-lg text-center">Explore our carefully curated selection of eco-friendly destinations that offer sustainable accommodations and unforgettable experiences.</p>
                 </div>
             </div>
         </section>

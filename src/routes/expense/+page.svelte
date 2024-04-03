@@ -70,7 +70,7 @@
         <div class="flex flex-row items-center space-x-4">
             <input
                 bind:value={source}
-                class="input input-bordered input-primary w-full max-w-xs"
+                class="input input-bordered input-primary w-full max-w-xs bg-transparent"
                 placeholder="Source"
                 type="text"
             />
@@ -79,11 +79,12 @@
             ></div>
             <input
                 bind:value={destination}
-                class="input input-bordered input-primary w-full max-w-xs"
+                class="input input-bordered input-primary w-full max-w-xs bg-transparent"
                 placeholder="Destination"
                 type="text"
             />
         </div>
+        
     </div>
     <div class="flex justify-center mt-4">
         <button
