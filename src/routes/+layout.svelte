@@ -27,14 +27,14 @@
 
     <div class="flex space-x-4">
         {#each Object.entries(routes) as [path, name]}
-            {#if $page.url.pathname !== path && name !== 'Register'}
+            {#if $page.url.pathname !== path && $currentUser}
                 <button class="btn btn-outline btn-primary" on:click={() => goto(path)}>{name}</button>
             {/if}
         {/each}
         {#if $currentUser}
             <button class="btn btn-outline btn-primary" on:click={logout}>Logout</button>
-        {:else}
-            <button class="btn btn-outline btn-primary" on:click={() => goto('/register')}>Logout</button>
+        {:else if $page.url.pathname !== '/register'}
+            <button class="btn btn-outline btn-primary" on:click={() => goto('/register')}>Register</button>
         {/if}
     </div>
 

@@ -5,31 +5,34 @@
     let username = '';
     let email = '';
     let password = '';
-
-    export let form: registerForm;
-
-    interface registerForm {
-        email: string;
-        password: string;
-        username: string;
-    }
+    let isLoggingIn = true;
 
     async function register() {
-        const data = {
-            "username": username,
-            "email": email,
-            "emailVisibility": true,
-            "password": password,
-            "passwordConfirm": password,
-        };
-        await pb.collection('users').create(data);
-        await pb.collection('users').authWithPassword(email, password);
-        await goto('/');
-    }
-
-    async function login() {
-        await pb.collection('users').authWithPassword(email, password);
-        await goto('/');
+        if (!isLoggingIn) {
+            const data = {
+                "username": username,
+                "email": email,
+                "emailVisibility": true,
+                "password": password,
+                "passwordConfirm": password,
+            };
+            try {
+                await pb.collection('users').create(data);
+            }
+            catch (e) {
+                alert("Invalid credentials or record not found")
+            }
+            finally {
+                return;
+            }
+        }
+        try {
+            await pb.collection('users').authWithPassword(email, password);
+            await goto('/');
+        }
+        catch (e) {
+            alert("Invalid credentials or record not found");
+        }
     }
 </script>
 
@@ -37,21 +40,19 @@
     .card {
         width: 400px;
     }
-
-    .card-title {
-        text-align: center;
-    }
 </style>
 
 <div class="flex justify-center items-center h-screen">
     <div class="card mx-auto max-w-2xl shadow-2xl bg-base-100"> <!-- Adjusting max-w-2xl for a wider card body -->
         <div class="card-body px-6 py-8"> <!-- Adding padding for the card body -->
             <h2 class="text-center text-xl font-bold">Login</h2>
-            <form class="space-y-6"> <!-- Adjusting space between form controls -->
+            <form class="space-y-6">
+                {#if !isLoggingIn}
                 <div class="form-control">
                     <label class="label" for="email">Username</label>
                     <input bind:value={username} class="input input-bordered" name="username">
                 </div>
+                {/if}
                 <div class="form-control">
                     <label class="label" for="email">Email</label>
                     <input bind:value={email} class="input input-bordered" type="email">
@@ -63,9 +64,16 @@
                 </div>
 
                 <div class="flex justify-between items-center">
-                    <button class="btn btn-primary" on:click={register}>Register</button>
-                    <div class="w-4"></div> <!-- Adding space between buttons -->
-                    <button class="btn btn-primary" on:click={login}>Login</button>
+                    <button class="btn btn-primary" on:click={register}>Login</button>
+                    <div class="w-4"></div>
+                    <button class="btn btn-primary" on:click={() => isLoggingIn = !isLoggingIn}>
+                        Switch to
+                        {#if isLoggingIn}
+                            Register
+                        {:else}
+                            Login
+                        {/if}
+                    </button>
                 </div>
             </form>
         </div>
