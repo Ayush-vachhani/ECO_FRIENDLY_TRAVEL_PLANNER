@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { currentUser, pb } from "$lib/pb";
-    import { onMount } from "svelte";
-    import { goto } from "$app/navigation";
+    import {currentUser, pb} from "$lib/pb";
+    import {onMount} from "svelte";
+    import {goto} from "$app/navigation";
 
     let source: string = "coimbatore";
     let destination: string = "chennai";
@@ -10,6 +10,7 @@
     onMount(async () => {
         console.log("Current User:", $currentUser);
     });
+
     interface TransportationMode {
         mode: string;
         travelTime: string;
@@ -19,7 +20,7 @@
     async function callOpenAIEndpoint() {
         const response = await fetch("/server", {
             method: "POST",
-            body: JSON.stringify({ source, destination }),
+            body: JSON.stringify({source, destination}),
         });
 
         interface ServerResponse {
@@ -40,6 +41,7 @@
             responseText = "Failed to fetch response.";
         }
     }
+
     async function logout() {
         pb.authStore.clear();
         await goto("/register");
@@ -72,7 +74,7 @@
         <button
             class="btn btn-outline btn-primary"
             on:click={callOpenAIEndpoint}
-            >Get Eco-Friendly Travel Options
+        >Get Eco-Friendly Travel Options
         </button>
     </div>
 
@@ -83,31 +85,31 @@
         <p>Origin: {source}</p>
         <p>Destination: {destination}</p>
 
-        <br /><br />
+        <br/><br/>
 
         <div class="overflow-x-auto">
             <table class="w-full border-collapse table-auto">
                 <thead>
-                    <tr>
-                        <th class="px-4 py-2 border">Mode</th>
-                        <th class="px-4 py-2 border">Travel Time</th>
-                        <th class="px-4 py-2 border">Carbon Emission</th>
-                    </tr>
+                <tr>
+                    <th class="px-4 py-2 border">Mode</th>
+                    <th class="px-4 py-2 border">Travel Time</th>
+                    <th class="px-4 py-2 border">Carbon Emission</th>
+                </tr>
                 </thead>
                 <tbody>
-                    {#each transportationModes as mode}
-                        <tr>
-                            <td class="border px-4 py-2">{mode.mode}</td>
-                            <td class="border px-4 py-2">{mode.travelTime}</td>
-                            <td class="border px-4 py-2"
-                                >{mode.carbonEmission}</td
-                            >
-                        </tr>
-                    {/each}
+                {#each transportationModes as mode}
+                    <tr>
+                        <td class="border px-4 py-2">{mode.mode}</td>
+                        <td class="border px-4 py-2">{mode.travelTime}</td>
+                        <td class="border px-4 py-2"
+                        >{mode.carbonEmission}</td
+                        >
+                    </tr>
+                {/each}
                 </tbody>
             </table>
         </div>
-        <br /><br />
+        <br/><br/>
         <p>Overall Suggestion: {responseText}</p>
     </div>
 
@@ -117,13 +119,13 @@
         Eco-Friendly Travel Planner - Expense page
     </h1>
 
-    <br /><br />
+    <br/><br/>
 
     <div class="form-container">
         <!-- Form to collect details -->
         <form>
 
-            <br />
+            <br/>
 
             <div class="flex flex-col mb-4 items-center">
                 <select
@@ -149,11 +151,12 @@
                 />
             </div>
 
-            <br />
+            <br/>
 
             <div class="flex flex-col mb-4 items-center">
                 <button class="btn btn-outline btn-primary" type="submit"
-                    >Get Estimated Cost of Travel</button
+                >Get Estimated Cost of Travel
+                </button
                 >
             </div>
         </form>
